@@ -1,6 +1,6 @@
 <?php
 
-    class Product {
+    abstract class Product {
         public $ProductName;
         public $ProductPrice;
 
@@ -27,14 +27,12 @@
             return $this->ProductPrice;
         }
 
-        public function display(){
-
-        }
+        abstract function display();
 
 
     }
 
-    class Movies extends Product{
+    class Movie extends Product{
         public $director;
         public $rating;
 
@@ -42,9 +40,11 @@
          * @param $director
          * @param $rating
          */
-        public function __construct($director, $rating) {
+        public function __construct($ProductName, $ProductPrice, $director, $rating) {
+            parent::__construct($ProductName, $ProductPrice);
             $this->director = $director;
             $this->rating = $rating;
+
         }
 
         /**
@@ -61,6 +61,10 @@
             return $this->rating;
         }
 
+        public function display(){
+            return "<br>Movie Name: " . $this->ProductName. "<br>Movie Price: " . $this->ProductPrice . "<br>Director: " . $this->director.  "<br>Rating: " . $this->rating;
+        }
+
 
     }
 
@@ -72,7 +76,8 @@
          * @param $author
          * @param $genre
          */
-        public function __construct($author, $genre) {
+        public function __construct($ProductName, $ProductPrice, $author, $genre) {
+            parent::__construct($ProductName, $ProductPrice);
             $this->author = $author;
             $this->genre = $genre;
         }
@@ -91,5 +96,7 @@
             return $this->genre;
         }
 
-
+        public function display(){
+            return "<br>Book Name: " . $this->ProductName. "<br>Book Price: " . $this->ProductPrice . "<br>Author: " . $this->author.  "<br>Genre: " . $this->genre;
+        }
     }
