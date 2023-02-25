@@ -38,7 +38,7 @@
                     </div>
                     <br>
                     <div class="mb-3">
-                        Year: <input type="number" name="year" min="1"/>
+                        Year: <input type="number" name="year" min="1900"/>
 
                     </div>
                     <br>
